@@ -1,0 +1,96 @@
+<section id="print__bootstrap">
+  <div>
+    <p class="text-success m-b-10">CMS configured successfully, click here to
+      <a class="text-link pointer" (click)="goToLogin()">Login</a> with your credential.</p>
+  </div>
+  <hr class="hr-thick" />
+  <p class="font__normal--regular">Details of CMS configuration</p>
+  <hr class="hr-thin" />
+  <!-- organization summary -->
+  <section title="organization">
+    <div>
+      <p class="text__title">Organization</p>
+    </div>
+    <div class="row font__normal--regular">
+      <div class="col-4">
+        <label class="f-14"> Organization Name</label>
+        <p class="text-dubbed" [innerText]="organizationData.name"></p>
+      </div>
+      <div class="col-4">
+        <label class="f-14"> Domain Name</label>
+        <p class="text-dubbed" [innerText]="organizationData.domain"></p>
+      </div>
+      <div class="col-4">
+        <label class="f-14"> Address</label>
+        <p class="text-dubbed" [innerText]="organizationData.address"></p>
+      </div>
+      <div class="col-4">
+        <label class="f-14"> URL </label>
+        <p class="text-dubbed" [innerText]="organizationData.url"></p>
+      </div>
+    </div>
+    <hr class="hr-thin" />
+  </section>
+
+  <!-- admin summary -->
+  <section title="admin">
+    <div>
+      <p class="text__title">Super Admin</p>
+    </div>
+    <div class="row font__normal--regular">
+      <div class="col-4">
+        <label class="f-14">First Name</label>
+        <p class="text-dubbed" [innerText]="adminData.firstName"></p>
+      </div>
+      <div class="col-4">
+        <label class="f-14">Last Name</label>
+        <p class="text-dubbed" [innerText]="adminData.lastName"></p>
+      </div>
+      <div class="col-4">
+        <label class="f-14">Email Address</label>
+        <p class="text-dubbed" [innerText]="adminData.email"></p>
+      </div>
+      <div class="col-4">
+        <label class="f-14">Phone Number</label>
+        <p class="text-dubbed" [innerText]="adminData.contact"></p>
+      </div>
+    </div>
+    <hr class="hr-thin" />
+  </section>
+
+  <!-- email summary -->
+  <section title="email" *ngIf="emailData?.length;">
+    <div>
+      <p class="text__title">Email Server</p>
+    </div>
+    <div class="row font__normal--regular">
+      <div class="col-4">
+        <label class="f-14"> Server Host</label>
+        <p class="text-dubbed" [innerText]="emailData?.host"></p>
+      </div>
+      <div class="col-4">
+        <label class="f-14"> Port </label>
+        <p class="text-dubbed" [innerText]="emailData?.port"></p>
+      </div>
+      <div class="col-4">
+        <label class="f-14"> Account Username</label>
+        <p class="text-dubbed" [innerText]="emailData?.username"></p>
+      </div>
+      <div class="col-4">
+        <label class="f-14"> Protocol </label>
+        <p class="text-dubbed" [innerText]="emailData?.protocol"></p>
+      </div>
+      <div class="col-4">
+        <label class="f-14"> Retry count </label>
+        <p class="text-dubbed" [innerText]="emailData?.retryCount"></p>
+      </div>
+    </div>
+    <hr class="hr-thin" />
+  </section>
+
+  <div class="row justify-content-md-center space-30 ">
+    <div class="col-2">
+      <button type="button" class="btn btn-primary btn-action btn-w-m waves-effect text-center pointer" title="Done" (click)="goToLogin()">Done</button>
+    </div>
+  </div>
+</section>

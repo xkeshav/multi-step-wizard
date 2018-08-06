@@ -1,0 +1,108 @@
+<div>
+	<p class="text__title">Configure Email Server</p>
+</div>
+<div class="form-horizontal">
+	<form [formGroup]="emailSettingForm" novalidate class="form" (ngSubmit)="goToNext()" id="emailSettingFormSection">
+		<div class="row">
+			<div class="form-group col">
+				<label class="form__label" for="server_host"> Server Host </label>
+				<input (input)="onTestMailChange()" type="text" formControlName="host" class="form-control form__input" id="server_host"
+				 placeholder="notifications@acme.com" />
+				<div class="form__error">
+					<div *ngIf="host.touched && !host.valid">
+						<span *ngIf="host?.errors['required']">Please enter server host.</span>
+						<span *ngIf="host?.errors['pattern']">Incorrect server host.</span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group col offset-2">
+				<label class="form__label" for="protocol">Protocol Type</label>
+				<input (input)="onTestMailChange()" type="text" formControlName="protocol" class="form-control form__input" id="protocol"
+				 placeholder="SMTP" />
+				<div class="form__error">
+					<div *ngIf="protocol.touched && !protocol.valid">
+						<span *ngIf="protocol?.errors['required']">Please enter protocol type.</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col">
+				<label class="form__label" for="account_username"> Account Username</label>
+				<input (input)="onTestMailChange()" type="text" formControlName="username" class="form-control form__input" id="account_username"
+				 placeholder="admin@acme.com" />
+				<div class="form__error">
+					<div *ngIf="username.touched && !username.valid">
+						<span *ngIf="username?.errors['required']">Please enter account username.</span>
+						<span *ngIf="username?.errors['pattern']">Incorrect account username.</span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group col offset-2">
+				<label class="form__label" for="password">Password</label>
+				<input (input)="onTestMailChange()" type="password" formControlName="password" class="form-control form__input" id="password"
+				 placeholder="password" />
+				<div class="form__error">
+					<div *ngIf="password.touched && !password.valid">
+						<span *ngIf="password?.errors['required']">Please enter password.</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col">
+				<label class="form__label" for="port">Port</label>
+				<input (input)="onTestMailChange()" type="text" [maxlength]="5" formControlName="port" class="form-control form__input" id="port"
+				 placeholder="1-65535" />
+				<div class="form__error">
+					<div *ngIf="port.touched && !port.valid">
+						<span *ngIf="port.errors['required']">Please enter Port.</span>
+						<span *ngIf="port?.errors['pattern']">Port must be number and between 1-65535.</span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group col  offset-2">
+				<label class="form__label" for="retry_count">Retry Count</label>
+				<input (input)="onTestMailChange()" type="text" formControlName="retryCount" class="form-control form__input" id="retry_count"
+				 placeholder="0-5" [maxlength]="1" />
+				<div class="form__error">
+					<div *ngIf="retryCount.touched && !retryCount.valid">
+						<span *ngIf="retryCount?.errors['required']">Please enter retry count.</span>
+						<span *ngIf="retryCount?.errors['pattern']">retry count must be number and between 0-5.</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-5">
+				<label class="form__label" for="to_address">To Address</label>
+				<input (input)="onTestMailChange()" type="email" formControlName="testMailId" class="form-control form__input" id="to_address"
+				 placeholder="john.smith@acme.com" />
+				<div class="form__error">
+					<div *ngIf="testMailId.touched && !testMailId.valid">
+						<span *ngIf="testMailId?.errors['required']">Please enter email address.</span>
+						<span *ngIf="testMailId?.errors['pattern']">Invalid email address.</span>
+					</div>
+					<div *ngIf="isEmailSent" class="text-success" [innerHTML]="successMsg"></div>
+					<div *ngIf="isEmailError" [innerHTML]="errorMsg"></div>
+				</div>
+			</div>
+			<div class="m-t-10">
+				<button class="btn btn-primary btn-action btn-w-m" [disabled]="(emailSettingForm.invalid || testMailId.invalid) || testEmailSubmitted"
+				 [ngClass]="{'disable-pointer': (emailSettingForm.invalid || testMailId.invalid)}" (click)="doCheckEmail()" title="Test">
+					<span *waiting="{hold: testEmailSubmitted, section:'emailSettingFormSection'}">Test</span>
+				</button>
+			</div>
+		</div>
+		<div class="row fr">
+			<div>
+				<button type="button" class="btn btn-primary btn-action btn-w-m" (click)="skipToNext()" title="Skip">Skip </button>
+			</div>
+			<div class="col-2">
+				<button type="submit" title="Next" class="btn btn-primary btn-action btn-w-m " [disabled]="!isEmailSent" [ngClass]="{'disable-pointer': !isEmailSent}">
+					<span *waiting="{hold: formSubmitted, section: 'emailSettingFormSection'}">Next</span>
+				</button>
+			</div>
+		</div>
+	</form>
+</div>

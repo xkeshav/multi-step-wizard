@@ -1,0 +1,11 @@
+<div class="init__wizard--inner">
+	<ul class="nav nav-tabs" id="myTab">
+		<li *ngFor="let list of navbarList; index as i">
+			<a attr.title="list.title" [ngClass]="{'valid': list.done, 'active': list.active}">
+				<span class="round-tabs">{{i + 1}}</span>
+			</a>
+			<span>{{list.title}}</span>
+			<li>
+	</ul>
+	<div class="clearfix"></div>
+</div>

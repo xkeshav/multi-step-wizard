@@ -1,0 +1,203 @@
+:root {
+  --base-bg-color: #f7f7f7;
+  --base-font-family: 'Open Sans';
+  --base-font-color: #666666;
+  --base-font-size: 13px;
+  --border-color: #ececec;
+}
+
+/* universal selector style */
+
+body {
+  font-family: var(--base-font-family, 'sans serif', 'Roboto', 'Helvetica');
+  background-color: var(--base-bg-color, #ffffff);
+  font-size: var(--base-font-size, 1.2rem);
+  color: var(--base-font-color, #000000);
+  overflow-x: hidden !important;
+}
+
+ul {
+  padding-left: 0;
+  list-style-type: none;
+  margin-bottom: 0;
+}
+
+a {
+  font-size: 12px;
+  font-weight: 400;
+  color: #6fb6d7;
+  outline: none;
+}
+
+a:focus,
+a:hover {
+  text-decoration: none;
+}
+
+input[type='checkbox'].hidden {
+  opacity: 0;
+  position: absolute;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.tc {
+  text-align: center !important;
+}
+
+.tr {
+  text-align: right !important;
+}
+
+.tl {
+  text-align: left !important;
+}
+
+.nbr {
+  border-radius: 0px !important;
+}
+
+.disabled {
+  opacity: 0.5; //This grays it out to look disabled
+  pointer-events: none !important; //This makes it not clickable
+}
+
+.untouchable {
+  pointer-events: none !important;
+}
+
+.ng-hide.ng-hide-animate {
+  display: none !important;
+}
+
+input.ng-invalid.ng-touched {
+  border-bottom-color: indianred !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.disable-pointer {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.fit__center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.f-14 {
+  font-size: 14px;
+}
+
+.f-12 {
+  font-size: 12px;
+}
+
+/* placeholder css : https://goo.gl/8EdKS5 */
+
+::-webkit-input-placeholder {
+  transition: opacity 250ms ease-in-out;
+}
+
+:focus::-webkit-input-placeholder {
+  opacity: 0.5;
+}
+:-ms-input-placeholder {
+  /* IE 10+ */
+  transition: opacity 250ms ease-in-out;
+}
+:focus:-ms-input-placeholder {
+  opacity: 0.5;
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  opacity: 1;
+  transition: opacity 250ms ease-in-out;
+}
+:focus::-moz-placeholder {
+  opacity: 0.5;
+}
+:-moz-placeholder {
+  /* Firefox 4 - 18 */
+  opacity: 1;
+  transition: opacity 250ms ease-in-out;
+}
+:focus:-moz-placeholder {
+  opacity: 0.5;
+}
+
+.required::after {
+  position: relative;
+  content: '\2734';
+  color: lightgray;
+  position: relative;
+  font-size: 9px;
+  font-weight: 100;
+  top: -3px;
+  right: -1px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+/* custom checkbox */
+input[type='checkbox'] {
+  box-sizing: border-box;
+  padding: 0;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+label.checkbox-button {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 12px;
+  position: relative;
+  margin: 0;
+  .checkbox-button__control {
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+    vertical-align: middle;
+    color: darkblue;
+    border: 2px solid var(--border-color);
+  }
+
+  .checkbox-button__label {
+    vertical-align: middle;
+    color: lightgray;
+  }
+}
+
+.active {
+  .checkbox-button__input:checked + .checkbox-button__control:after {
+    background: white;
+  }
+  .checkbox-button__input:checked ~ span.checkbox-button__control {
+    border-color: white;
+  }
+}
+
+.card {
+  border-radius: 2px;
+  border-top: 4px solid var(--border-color);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.05);
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  margin-bottom: 30px;
+}
