@@ -4,15 +4,14 @@ import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/map';
-
-import { InitializationService } from '../initialization/initialization.service';
+import { RegistrationService } from '../registration/registration.service';
 
 @Injectable()
 export class InitGuardService implements CanActivate {
-  constructor(public router: Router, private initService: InitializationService) {}
+  constructor(public router: Router, private regService: RegistrationService) {}
 
   canActivate(): Observable<boolean> | boolean {
-    return this.initService
+    return this.regService
       .checkAccess()
       .take(1)
       .map((res: any) => {

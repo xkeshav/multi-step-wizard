@@ -2,7 +2,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
@@ -12,7 +12,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { AppRoutes } from './app.routing';
 import { WorkflowService } from './layout/workflow/workflow.service';
-import { InitializationService } from './initialization/initialization.service';
+import { RegistrationService } from './registration/registration.service';
 
 @NgModule({
   declarations: [AppComponent, LayoutComponent, NavbarComponent],
@@ -36,7 +36,7 @@ import { InitializationService } from './initialization/initialization.service';
       }
     })
   ],
-  providers: [WorkflowService, InitializationService],
+  providers: [WorkflowService, RegistrationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

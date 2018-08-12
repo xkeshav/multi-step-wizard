@@ -1,0 +1,44 @@
+<div>
+	<header class="text__title">Personal Information</header>
+	<span class="text__mandatory fr">All fields are mandatory</span>
+</div>
+<div class="form__div">
+	<form [formGroup]="personalForm" novalidate class="form__content" (ngSubmit)="goToNext()" id="personalForm" method="POST">
+		<div class="form__message"></div>
+		<div class="form__body">
+			<div class="form__group">
+				<label class="form__label" for="Personal_name"> Personal Name</label>
+				<input type="text" formControlName="name" class="form__input" id="Personal_name" placeholder="ACME Corp" />
+				<div class="form__error">
+					<div *ngIf="(name.dirty || name.touched) && name.invalid">
+						<span *ngIf="name?.errors?.required">Please enter Personal Name.</span>
+					</div>
+				</div>
+			</div>
+			<div class="form__group">
+				<label class="form__label" for="domain_name">Domain Name</label>
+				<input type="text" formControlName="domain" class="form__input" id="domain_name" placeholder="acme.com" />
+				<div class="form__error">
+					<div *ngIf="(domain.dirty || domain.touched) && domain.invalid">
+						<span *ngIf="domain?.errors?.required">Please enter Domain Name.</span>
+						<span *ngIf="domain?.errors?.pattern">Invalid Domain Name.</span>
+					</div>
+				</div>
+			</div>
+			<div class="form__group">
+				<label class="form__label" for="address">Personal Address</label>
+				<input type="text" formControlName="address" class="form__input" id="address" placeholder="ACME Corporation" />
+				<div class="form__error">
+					<div *ngIf="(address.dirty || address.touched) && address.invalid">
+						<span *ngIf="address?.errors?.required">Please enter Personal Address.</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form__action">
+			<button type="submit" title="Next" class="btn btn__action" [disabled]="personalForm.invalid || formSubmitted" [ngClass]="personalForm.valid ? 'cursor__pointer' : 'cursor__disable'">
+				<span *waiting="{hold: formSubmitted, section: 'personalForm'}">Next</span>
+			</button>
+		</div>
+	</form>
+</div>

@@ -3,15 +3,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute } from '@angular/router';
 
-import { WorkflowService } from '../../layout/workflow/workflow.service';
-import { InitializationService } from '../initialization.service';
 import { AppConstants } from '../../app.constants';
+import { RegistrationService } from '../registration.service';
+import { WorkflowService } from '../../layout/workflow/workflow.service';
 
 @Component({
-  selector: 'app-email',
-  templateUrl: './email.component.html'
+  selector: 'app-contact',
+  templateUrl: './contact.html'
 })
-export class EmailComponent implements OnInit {
+export class ContactComponent implements OnInit {
   private readonly pattern_email: RegExp = AppConstants.REGEX.EMAIL;
   private readonly pattern_domain: RegExp = AppConstants.REGEX.DOMAIN;
   private readonly pattern_port: RegExp = AppConstants.REGEX.PORT;
@@ -29,7 +29,7 @@ export class EmailComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private workflowService: WorkflowService,
-    private initService: InitializationService,
+    private regService: RegistrationService,
     private toastr: ToastrService
   ) {
     this.formSubmitted = false;
@@ -57,7 +57,7 @@ export class EmailComponent implements OnInit {
   private configurationEmailSetting() {
     if (this.emailSettingForm.valid) {
       this.formSubmitted = true;
-      this.initService
+      this.regService
         .configureEmail(this.getPayLoad())
         .finally(() => (this.formSubmitted = false))
         .subscribe(message => {

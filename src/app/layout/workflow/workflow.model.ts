@@ -1,9 +1,9 @@
-export const STEPS = ['unlock', 'organization', 'admin', 'email', 'eula'];
+export const STEPS = ['unlock', 'personal', 'official', 'contact', 'agreement'];
 
 export const NAVBAR: any = [
-    { title: 'Unlock CMS', link: 'unlock' },
-    { title: 'Register Organization', link: 'organization' },
-    { title: 'Register Super Admin', link: 'admin' },
-    { title: 'Configure Email Server ', link: 'email' },
-    { title: 'Eula Agreement', link: 'eula' }
+  { title: 'Unlock CMS', link: 'unlock' },
+  { title: 'Register Organization', link: 'personal' },
+  { title: 'Register Super Admin', link: 'official' },
+  { title: 'Configure Email Server ', link: 'contact' },
+  { title: 'Eula Agreement', link: 'agreement' }
 ];

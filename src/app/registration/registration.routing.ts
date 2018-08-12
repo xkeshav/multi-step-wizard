@@ -1,32 +1,36 @@
 import { Routes } from '@angular/router';
 
-import { UnlockComponent } from './unlock/unlock.component';
-import { OrganizationComponent } from './organization/organization.component';
-import { AdminComponent } from './admin/admin.component';
-import { EmailComponent } from './setting/email.component';
-import { SummaryComponent } from './summary/summary.component';
-import { AgreementComponent } from './agreement/agreement.component';
 import { InitGuard } from '../guards';
+import { UnlockComponent } from './unlock/unlock.component';
+import { PersonalComponent } from './personal/personal.component';
+import { OfficialComponent } from './official/official.component';
+import { ContactComponent } from './contact/contact.component';
+import { AgreementComponent } from './agreement/agreement.component';
+import { SummaryComponent } from './summary/summary.component';
 
 export const InitializationRoutes: Routes = [
   {
     path: '',
     canActivate: [InitGuard],
     children: [
-      { path: 'unlock', component: UnlockComponent, data: { step: 1 } },
       {
-        path: 'organization',
-        component: OrganizationComponent,
+        path: 'unlock',
+        component: UnlockComponent,
+        data: { step: 1 }
+      },
+      {
+        path: 'personal',
+        component: PersonalComponent,
         data: { step: 2 }
       },
       {
-        path: 'admin',
-        component: AdminComponent,
+        path: 'official',
+        component: OfficialComponent,
         data: { step: 3 }
       },
       {
-        path: 'email',
-        component: EmailComponent,
+        path: 'contact',
+        component: ContactComponent,
         data: { step: 4 }
       },
       {

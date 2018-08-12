@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 // import 'rxjs/add/operator/finally';
 
 @Injectable()
-export class InitializationService {
+export class RegistrationService {
   constructor(private httpClient: HttpClient) {}
 
   checkAccess() {

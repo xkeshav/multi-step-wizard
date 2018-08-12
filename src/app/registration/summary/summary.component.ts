@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { InitializationService } from '../initialization.service';
+import { RegistrationService } from '../registration.service';
 import { WorkflowService } from '../../layout/workflow/workflow.service';
 
 @Component({
   selector: 'app-summary',
-  templateUrl: './summary.component.html'
+  templateUrl: './summary.html'
 })
 export class SummaryComponent implements OnInit {
   organizationData: any;
@@ -15,7 +15,7 @@ export class SummaryComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private initService: InitializationService,
+    private regService: RegistrationService,
     private workflowService: WorkflowService
   ) {}
 

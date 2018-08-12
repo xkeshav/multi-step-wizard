@@ -1,21 +1,13 @@
 .init__wizard {
   & .card {
     padding: 2rem;
-
-    .text__title {
-      font-weight: 500;
-      font-size: 16px;
-      color: black;
-      display: inline-grid;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .text__subtitle {
-      font-weight: 400;
-      font-size: 13px;
-      color: black;
-    }
+    border-radius: 2px;
+    border-top: 4px solid var(--border-color);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.05);
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    margin-bottom: 30px;
   }
   & .init__wizard--inner {
     & ul.nav-tabs {
@@ -118,7 +110,7 @@ header {
   margin: 1em auto;
 }
 
-main {
+.container {
   display: grid;
   min-height: 100px;
   grid-template-areas:
@@ -136,33 +128,28 @@ main {
 
 .content {
   grid-area: content;
-  background-color: azure;
 }
-/** **/
+
 /** custom css for forms */
-.form__input {
-  font-size: 13px;
-  border: 0px;
-  border-radius: 0px;
-  border-bottom: 1px solid var(--border-color) !important;
-  -webkit-border-radius: 0px;
-  appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  outline: none;
+.text__title {
+  font-weight: 500;
+  font-size: 16px;
+  color: black;
+  display: inline-grid;
+  justify-content: center;
+  align-items: center;
 }
-.form__label {
-  font-size: 12px;
-  color: #2e2e2e;
-  font-weight: 600;
-  margin-bottom: -4px;
-}
-.form__error {
-  color: var(--red, indianred);
-  text-align: left;
-  font-size: smaller;
+
+.text__subtitle {
   font-weight: 400;
-  font-variant: normal;
-  padding: 4px 0;
-  height: 1.2rem;
+  font-size: 13px;
+  color: black;
+}
+
+.text__link {
+  color: #5a887c;
+  font-size: larger;
+  font-style: italic;
+  font-weight: 500;
+  user-select: all;
 }

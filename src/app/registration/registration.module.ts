@@ -4,17 +4,18 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { UnlockComponent } from './unlock/unlock.component';
-import { OrganizationComponent } from './organization/organization.component';
-import { AdminComponent } from './admin/admin.component';
-import { EmailComponent } from './setting/email.component';
+import { PersonalComponent } from './personal/personal.component';
+import { OfficialComponent } from './official/official.component';
+import { AgreementComponent } from './agreement/agreement.component';
+import { ContactComponent } from './contact/contact.component';
 import { SummaryComponent } from './summary/summary.component';
 
-import { InitializationService } from './initialization.service';
-import { InitializationRoutes } from './initialization.routing';
-import { AgreementComponent } from './agreement/agreement.component';
-import { WaitingDirective } from '../directives/waiting.directive';
 import { WaitingComponent } from '../directives/waiting.component';
+import { WaitingDirective } from '../directives/waiting.directive';
+import { InitializationRoutes } from './registration.routing';
+import { RegistrationService } from './registration.service';
 import { InitGuardService } from '../guards/init-guard.service';
+import { DisplayPasswordDirective } from '../directives/display-password.directive';
 
 @NgModule({
   imports: [
@@ -25,15 +26,16 @@ import { InitGuardService } from '../guards/init-guard.service';
   ],
   declarations: [
     UnlockComponent,
-    OrganizationComponent,
-    AdminComponent,
-    EmailComponent,
+    PersonalComponent,
+    OfficialComponent,
+    ContactComponent,
     AgreementComponent,
     SummaryComponent,
     WaitingComponent,
-    WaitingDirective
+    WaitingDirective,
+    DisplayPasswordDirective
   ],
-  providers: [InitializationService, InitGuardService],
+  providers: [RegistrationService, InitGuardService],
   entryComponents: [WaitingComponent]
 })
-export class InitializationModule {}
+export class RegistrationModule {}

@@ -1,0 +1,36 @@
+<div>
+	<header class="text__title">Unlock CMS</header>
+	<p class="text__subtitle" [innerText]="contentHeading"></p>
+	<p class="text__link">/opt/path/to/password/file
+		<i class="icon__copy"></i>
+	</p>
+	<p class="text__muted">Please copy the password from the link above and paste it below</p>
+</div>
+<div class="form__div">
+	<form [formGroup]="unlockForm" (ngSubmit)="goToNext()" id="unlockFormSection" class="form__content" method="POST" novalidate>
+		<div class="form__message">
+		</div>
+		<div class="form__body">
+			<div class="form__group">
+				<label for="name" class="form__label">Enter name</label>
+				<input id="name" type="text" class="form__input" formControlName="name" autocomplete="off">
+			</div>
+			<div class="form__group">
+				<label for="license_key" class="form__label">Enter password</label>
+				<input id="license_key" type="password" class="form__input form__password" formControlName="password" autocomplete="off">
+				<i class="icon__eye" displayPassword></i>
+				<div class="form__error">
+					<ng-container *ngIf="(password.dirty || password.touched) && password.invalid">
+						<div *ngIf="password?.errors['required']">Please enter password.</div>
+					</ng-container>
+				</div>
+			</div>
+		</div>
+		<div class="form__action">
+			<button type="submit" title="Next" class="btn btn__action" [disabled]="unlockForm.invalid || formSubmitted" [ngClass]="unlockForm.valid ? 'cursor__pointer' : 'cursor__disable'">
+				<span *waiting="{hold: formSubmitted, section:'unlockFormSection'}">Next</span>
+			</button>
+			<button title="Clear" class="btn btn__clear">Clear</button>
+		</div>
+	</form>
+</div>

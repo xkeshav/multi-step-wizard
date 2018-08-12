@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-
-import { WorkflowService } from '../../layout/workflow/workflow.service';
-import { InitializationService } from '../initialization.service';
-import { AppConstants } from '../../app.constants';
 import { ToastrService } from 'ngx-toastr';
 
+import { AppConstants } from '../../app.constants';
+import { RegistrationService } from '../registration.service';
+import { WorkflowService } from '../../layout/workflow/workflow.service';
+
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html'
+  selector: 'app-official',
+  templateUrl: './official.html'
 })
-export class AdminComponent implements OnInit {
+export class OfficialComponent implements OnInit {
   // private readonly pattern_email: RegExp = AppConstants.REGEX.EMAIL;
   // private readonly pattern_password: RegExp = AppConstants.REGEX.PASSWORD;
   // readonly popoverContent: string = AppConstants.USER.PASSWORD_CRITERIA;
@@ -22,7 +22,7 @@ export class AdminComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private workflowService: WorkflowService,
-    private initService: InitializationService,
+    private regService: RegistrationService,
     private toastr: ToastrService
   ) {
     this.buildForm();
@@ -38,11 +38,11 @@ export class AdminComponent implements OnInit {
   private registerSuperAdmin() {
     this.formSubmitted = true;
     const payload = this.superAdminForm.value;
-    this.initService
+    this.regService
       .registerAdmin(payload)
       .finally(() => (this.formSubmitted = false))
       .subscribe(res => {
-        // this.initService.setAdminData(payload);
+        // this.regService.setAdminData(payload);
         this.toastr.success(res.message, AppConstants.INIT.REGISTER_ADMIN_TITLE);
         this.superAdminForm.reset();
         this.workflowService.validateStep(this.currentStep, true);

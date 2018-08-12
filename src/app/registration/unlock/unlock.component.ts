@@ -3,37 +3,38 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
-import { InitializationService } from '../initialization.service';
-import { WorkflowService } from '../../layout/workflow/workflow.service';
 import { AppConstants } from '../../app.constants';
+import { RegistrationService } from '../registration.service';
+import { WorkflowService } from '../../layout/workflow/workflow.service';
 
 import 'rxjs/add/operator/finally';
 
 @Component({
   selector: 'app-unlock',
-  templateUrl: './unlock.component.html'
+  templateUrl: './unlock.html'
 })
 export class UnlockComponent implements OnInit {
   unlockForm: FormGroup;
   formSubmitted: boolean = false;
   currentStep: number;
 
-  contentHeading: string =
-    'To ensure CMS is securely setup by the authorized administrator, a first boot password is created at the below mentioned file on server.';
+  contentHeading: string = 'A first password is created to access the system.';
 
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private initService: InitializationService,
+    private regService: RegistrationService,
     private workflowService: WorkflowService,
     private toastr: ToastrService
   ) {}
+
   ngOnInit() {
     this.buildForm();
     this.route.data.subscribe(data => {
       this.currentStep = data.step;
     });
   }
+
   goToNext() {
     this.unlock();
   }
@@ -41,7 +42,7 @@ export class UnlockComponent implements OnInit {
   private unlock() {
     this.formSubmitted = true;
     const payload = this.unlockForm.value;
-    this.initService
+    this.regService
       .verify(payload)
       .finally(() => (this.formSubmitted = false))
       .subscribe(res => {
@@ -53,6 +54,7 @@ export class UnlockComponent implements OnInit {
 
   private buildForm() {
     this.unlockForm = this.fb.group({
+      name: [''],
       password: ['', Validators.required]
     });
   }

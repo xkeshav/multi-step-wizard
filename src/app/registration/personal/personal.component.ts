@@ -3,24 +3,24 @@ import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
-import { WorkflowService } from '../../layout/workflow/workflow.service';
-import { InitializationService } from '../initialization.service';
 import { AppConstants } from '../../app.constants';
+import { RegistrationService } from '../registration.service';
+import { WorkflowService } from '../../layout/workflow/workflow.service';
 
 @Component({
-  selector: 'app-organization',
-  templateUrl: './organization.component.html'
+  selector: 'app-personal',
+  templateUrl: './personal.html'
 })
-export class OrganizationComponent implements OnInit {
+export class PersonalComponent implements OnInit {
   private readonly pattern_domain: RegExp = AppConstants.REGEX.DOMAIN;
   formSubmitted: boolean = false;
-  organizationForm: FormGroup;
+  personalForm: FormGroup;
   currentStep: number;
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private workflowService: WorkflowService,
-    private initService: InitializationService,
+    private regService: RegistrationService,
     private toastr: ToastrService
   ) {
     this.buildForm();
@@ -38,19 +38,19 @@ export class OrganizationComponent implements OnInit {
 
   private registerOrganization() {
     this.formSubmitted = true;
-    const payload = this.organizationForm.value;
-    this.initService
+    const payload = this.personalForm.value;
+    this.regService
       .registerTenant(payload)
       .finally(() => (this.formSubmitted = false))
       .subscribe(result => {
         this.toastr.success(result.message, AppConstants.INIT.REGISTER_TENANT_TITLE);
-        this.organizationForm.reset();
+        this.personalForm.reset();
         this.workflowService.validateStep(this.currentStep, true);
       });
   }
 
   private buildForm() {
-    this.organizationForm = this.fb.group({
+    this.personalForm = this.fb.group({
       name: ['', Validators.required],
       domain: ['', [Validators.required, Validators.pattern(this.pattern_domain)]],
       address: ['', Validators.required]
@@ -58,14 +58,14 @@ export class OrganizationComponent implements OnInit {
   }
 
   get name() {
-    return this.organizationForm.get('name');
+    return this.personalForm.get('name');
   }
 
   get domain() {
-    return this.organizationForm.get('domain');
+    return this.personalForm.get('domain');
   }
 
   get address() {
-    return this.organizationForm.get('address');
+    return this.personalForm.get('address');
   }
 }

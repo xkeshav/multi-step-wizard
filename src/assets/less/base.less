@@ -1,0 +1,140 @@
+:root {
+  --base-bg-color: #f7f7f7;
+  --base-font-family: 'Open Sans';
+  --base-font-color: #666666;
+  --base-font-size: 13px;
+  --border-color: #ececec;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--base-font-family, 'sans serif', 'Roboto', 'Helvetica');
+  background-color: var(--base-bg-color, #ffffff);
+  font-size: var(--base-font-size, 1.2rem);
+  color: var(--base-font-color, #000000);
+  overflow-x: hidden !important;
+}
+
+/* universal selector style */
+
+ul {
+  padding-left: 0;
+  list-style-type: none;
+  margin-bottom: 0;
+}
+
+a {
+  font-size: 12px;
+  font-weight: 400;
+  color: #6fb6d7;
+  outline: none;
+}
+
+a:focus,
+a:hover {
+  text-decoration: none;
+}
+
+.fw {
+  width: 100%;
+}
+
+.hw {
+  width: 50%;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.tc {
+  text-align: center;
+}
+
+.tr {
+  text-align: right;
+}
+
+.tl {
+  text-align: left;
+}
+
+.nbr {
+  border-radius: 0px;
+}
+
+.rdb {
+  border: 1px solid red;
+}
+
+.bg {
+  background-color: lighten(hotpink, 70%);
+}
+
+.disabled {
+  opacity: 0.5; //This grays it out to look disabled
+  pointer-events: none !important; //This makes it not clickable
+}
+
+.untouchable {
+  pointer-events: none !important;
+}
+
+.ng-hide.ng-hide-animate {
+  display: none !important;
+}
+
+.cursor__pointer {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.cursor__disable {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.cursor__text {
+  cursor: text;
+}
+
+.pointer__none {
+  pointer-events: none;
+}
+
+.btn__disable {
+  &:extend(.cursor-disable);
+}
+
+.btn__untouchable {
+  &:extend(.cursor-disable, .pointer--none);
+}
+
+.invisible {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.fit__center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.f-14 {
+  font-size: 14px;
+}
+
+.f-12 {
+  font-size: 12px;
+}

@@ -9,7 +9,7 @@ export const AppRoutes: Routes = [
       { path: '', redirectTo: 'init', pathMatch: 'full' },
       {
         path: 'init',
-        loadChildren: './initialization/initialization.module#InitializationModule'
+        loadChildren: './registration/registration.module#RegistrationModule'
       }
     ]
   },

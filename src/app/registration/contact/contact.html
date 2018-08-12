@@ -4,7 +4,7 @@
 <div class="form-horizontal">
 	<form [formGroup]="emailSettingForm" novalidate class="form" (ngSubmit)="goToNext()" id="emailSettingFormSection">
 		<div class="row">
-			<div class="form-group col">
+			<div class="form_group col">
 				<label class="form__label" for="server_host"> Server Host </label>
 				<input (input)="onTestMailChange()" type="text" formControlName="host" class="form-control form__input" id="server_host"
 				 placeholder="notifications@acme.com" />
@@ -15,7 +15,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="form-group col offset-2">
+			<div class="form_group col offset-2">
 				<label class="form__label" for="protocol">Protocol Type</label>
 				<input (input)="onTestMailChange()" type="text" formControlName="protocol" class="form-control form__input" id="protocol"
 				 placeholder="SMTP" />
@@ -27,7 +27,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="form-group col">
+			<div class="form_group col">
 				<label class="form__label" for="account_username"> Account Username</label>
 				<input (input)="onTestMailChange()" type="text" formControlName="username" class="form-control form__input" id="account_username"
 				 placeholder="admin@acme.com" />
@@ -38,7 +38,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="form-group col offset-2">
+			<div class="form_group col offset-2">
 				<label class="form__label" for="password">Password</label>
 				<input (input)="onTestMailChange()" type="password" formControlName="password" class="form-control form__input" id="password"
 				 placeholder="password" />
@@ -50,7 +50,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="form-group col">
+			<div class="form_group col">
 				<label class="form__label" for="port">Port</label>
 				<input (input)="onTestMailChange()" type="text" [maxlength]="5" formControlName="port" class="form-control form__input" id="port"
 				 placeholder="1-65535" />
@@ -61,7 +61,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="form-group col  offset-2">
+			<div class="form_group col  offset-2">
 				<label class="form__label" for="retry_count">Retry Count</label>
 				<input (input)="onTestMailChange()" type="text" formControlName="retryCount" class="form-control form__input" id="retry_count"
 				 placeholder="0-5" [maxlength]="1" />
@@ -74,7 +74,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="form-group col-5">
+			<div class="form_group col-5">
 				<label class="form__label" for="to_address">To Address</label>
 				<input (input)="onTestMailChange()" type="email" formControlName="testMailId" class="form-control form__input" id="to_address"
 				 placeholder="john.smith@acme.com" />
